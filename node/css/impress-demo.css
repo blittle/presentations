@@ -65,13 +65,14 @@ body {
     min-height: 740px;
 
     background: rgb(215, 215, 215);
-    background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 500, from(rgb(240, 240, 240)), to(rgb(190, 190, 190)));
-    background: -webkit-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
-    background:    -moz-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
-    background:      -o-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
-    background:         radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
+    background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 500, from(rgb(89, 83, 69)), to(rgb(53, 49, 41)));
+    background: -webkit-radial-gradient(rgb(89, 83, 69), rgb(53, 49, 41));
+    background:    -moz-radial-gradient(rgb(89, 83, 69), rgb(53, 49, 41));
+    background:      -o-radial-gradient(rgb(89, 83, 69), rgb(53, 49, 41));
+    background:         radial-gradient(rgb(89, 83, 69), rgb(53, 49, 41));
 
     -webkit-font-smoothing: antialiased;
+    color: white;
 }
 
 b, strong { font-weight: bold }
@@ -186,6 +187,7 @@ body     { pointer-events: none; }
 
 #title {
     padding: 0;
+    text-align: center;
 }
 
 #title .try {
@@ -201,14 +203,14 @@ body     { pointer-events: none; }
     transform:         translateZ(20px);
 }
 
-#title h1 {
-    font-size: 190px;
-    
-    -webkit-transform: translateZ(50px);
-    -moz-transform:    translateZ(50px);
-    -ms-transform:     translateZ(50px);
-    -o-transform:      translateZ(50px);
-    transform:         translateZ(50px);
+h1 {
+    color: #8cc84b;
+    font-size: 80px;
+}
+
+
+.small {
+    font-size: 20px;
 }
 
 #title .footnote {
