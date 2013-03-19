@@ -207,7 +207,7 @@
         <ul>
             <li>The DOM!</li>
             <li>Any objects from the parent thread - everything passed in a message is copied into the worker context*</li>
-            <li>You pass functions</li>
+            <li>You cannot pass functions within messages</li>
             <li>Cookies and web storage</li> 
         </ul>
     </div>
@@ -215,6 +215,7 @@
     <div id="ex" class="step" data-x="6300" data-y="2000" data-rotate="20" data-scale="4">
         <h1>Example?</h1>
         <p><a href="https://github.com/blittle/prime-workers">https://github.com/blittle/prime-workers</a></p>
+        <p><a href="http://bretlittle.org:4000">http://bretlittle.org:4000</a></p>
     </div>
 
     <div class="step" data-x="6300" data-y="5000" data-scale="4">
@@ -225,25 +226,14 @@
         <img src="images/random.png" width='800'>
     </div>
 
-    <div class="step" data-x="14000" data-y="5000" data-scale="4">
+    <div class="step" data-x="10000" data-y="5000" data-scale="4">
         <img src="images/order.png" width='800'>
     </div>
 
+    <div class="step" data-x="14000" data-y="5000" data-scale="4">
+        <img src="images/high-res.png">
+    </div>
 
-
-
-    <!--
-        
-        And the last one shows full power and flexibility of impress.js.
-        
-        You can not only position element in 3D, but also rotate it around any axis.
-        So this one here will get rotated by -40 degrees (40 degrees anticlockwise) around X axis and
-        10 degrees (clockwise) around Y axis.
-        
-        You can of course rotate it around Z axis with `data-rotate-z` - it has exactly the same effect
-        as `data-rotate` (these two are basically aliases).
-        
-    -->
     <div id="its-in-3d" class="step" data-x="6200" data-y="8300" data-z="1000" data-rotate-x="-40" data-rotate-y="10" data-scale="2">
         <img src="https://docs.google.com/spreadsheet/oimg?key=0ApHVoTscwfHHdGhPNGlQRzF2TXROVTNyYi1VUEJBWXc&oid=1&zx=1tnvkni5xa1e" />
     </div>
