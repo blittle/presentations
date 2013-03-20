@@ -102,35 +102,8 @@
 -->
 <div id="impress">
 
-    <!--
-        
-        Here is where interesting thing start to happen.
-        
-        Each step of the presentation should be an element inside the `#impress` with a class name
-        of `step`. These step elements are positioned, rotated and scaled by impress.js, and
-        the 'camera' shows them on each step of the presentation.
-        
-        Positioning information is passed through data attributes.
-        
-        In the example below we only specify x and y position of the step element with `data-x="-1000"`
-        and `data-y="-1500` attributes. This means that **the center** of the element (yes, the center)
-        will be positioned in point x = -1000px and y = -1500px of the presentation 'canvas'.
-        
-        It will not be rotated or scaled.
-        
-    -->
-       <!--
-        
-        This is an example of step element being scaled.
-        
-        Again, we use a `data-` attribute, this time it's `data-scale="4"`, so it means that this
-        element will be 4 times larger than the others.
-        From presentation and transitions point of view it means, that it will have to be scaled
-        down (4 times) to make it back to it's correct size.
-        
-    -->
     <div id="title" class="step" data-x="0" data-y="0" data-scale="1">
-        <img src='images/sweat.jpg'>
+        <img src='images/programmer.jpg'>
         <h1>Concurrency in the Browser with Web Workers</h1>
         <span class="footnote">UtahJS - Bret Little</span>
     </div>
@@ -215,7 +188,7 @@
     <div id="ex" class="step" data-x="6300" data-y="2000" data-rotate="20" data-scale="4">
         <h1>Example?</h1>
         <p><a href="https://github.com/blittle/prime-workers">https://github.com/blittle/prime-workers</a></p>
-        <p><a href="http://bretlittle.org:4000">http://bretlittle.org:4000</a></p>
+        <p><a href="http://bretlittle.org:5050">http://bretlittle.org:4000</a></p>
     </div>
 
     <div class="step" data-x="6300" data-y="5000" data-scale="4">
@@ -235,7 +208,7 @@
     </div>
 
     <div id="its-in-3d" class="step" data-x="6200" data-y="8300" data-z="1000" data-rotate-x="-40" data-rotate-y="10" data-scale="2">
-        <img src="https://docs.google.com/spreadsheet/oimg?key=0ApHVoTscwfHHdGhPNGlQRzF2TXROVTNyYi1VUEJBWXc&oid=1&zx=1tnvkni5xa1e" />
+        <img src="images/graph.png" />
     </div>
 
     <div class='step' data-x="8500" data-y="8300" data-z="1000" data-rotate-x="-40" data-rotate-y="10" data-scale="2">

@@ -2,25 +2,32 @@ Web Workers
 
 Background threads in the browser - simple and easy
 
-var worker = new Worker('my_task.js');
-worker.onmessage = function(event) {
-  console.log("Worker said : " + event.data);
-};
-worker.postMessage('ali');
-
-
-self.postMessage("I'm working befor postMessage('ali').");
-self.onmessage = function(event) {
-  self.postMessage('Hi '+event.data);
-};
+	var worker = new Worker('my_task.js');
+	worker.onmessage = function(event) {
+	  console.log("Worker said : " + event.data);
+	};
+	worker.postMessage('ali');
+	
+	
+	self.postMessage("I'm working befor postMessage('ali').");
+	self.onmessage = function(event) {
+	  self.postMessage('Hi '+event.data);
+	};
 
 Although the spec isn't implementation specific, generally Web Workers are Operating System Level threads or processes. This means that they have a high initialization cost. They aren't meant to be some thing that you start up a lot of and kill often, rather an object that you keep around for long periods of time to do work.
-
 
 
 Objects and values within messages are copied, not shared.
 
 Transferrable Objects - ArrayBuffer.
+
+	// Create a 32MB "file" and fill it.
+	var uInt8View = new Uint8Array(1024*1024*32); // 32MB
+	for (var i = 0; i < uInt8View.length; ++i) {
+	  uInt8View[i] = i;
+	}
+	 
+	worker.postMessage(uInt8Array.buffer, [uInt8Array.buffer]);
 
 Because workers are limited in a sandboxed scope, debugging is much easier and concurrency issues are rare.
 
@@ -45,7 +52,7 @@ Chrome Crashes With many workers
   https://code.google.com/p/chromium/issues/detail?id=127990
 
 SharedWorkers 
-  Normal workers can only be accessed by the script that spawned it, whereas sharedworkers can be
+  Normal workersj can only be accessed by the script that spawned it, whereas sharedworkers can be
     accessed by any script of the same domain.
   Only available in Chrome, Safari, and Opera (Not FF or IE)
   
