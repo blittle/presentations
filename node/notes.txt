@@ -1,0 +1,9 @@
+NodeJS
+
+1) Installing NodeJS
+2) What is Node, basics of executing a script - arguments
+3) NPM Basics - Searching libraries, installing libraries globally and locally
+4) CommonJS syntax - require and exports
+5) Debugging
+4) Package.json - generating and modifying
+5) Build a Module and Publish to NPM 

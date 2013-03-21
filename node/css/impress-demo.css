@@ -115,6 +115,7 @@ body     { pointer-events: none; }
     box-sizing:         border-box;
 
     font-family: 'PT Serif', georgia, serif;
+    text-align: center;
 
     font-size: 48px;
     line-height: 1.5;
@@ -208,6 +209,9 @@ h1 {
     font-size: 80px;
 }
 
+.medium {
+    font-size: 30px;
+}
 
 .small {
     font-size: 20px;
