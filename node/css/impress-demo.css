@@ -184,6 +184,20 @@ body     { pointer-events: none; }
     transform:         translateY(0px);
 }
 
+pre {
+    text-align: left;
+    font-size: 60px;
+    font-family: Andale Mono, Lucida Console, Monaco, fixed, monospace; 
+    color: #000000; 
+    background-color: #eee;
+    font-size: 22px;
+    border: 1px dashed #999999;
+    line-height: 24px;
+    padding: 5px; 
+    overflow: auto; 
+    width: 100%;
+}
+
 /* impress.js title */
 
 #title {

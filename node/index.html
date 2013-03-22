@@ -43,12 +43,12 @@
     <div class="step" data-x="4850" data-y="4000" data-rotate="90" data-scale="1">
         <h1>Building on Linux </h1>
         <ol class='medium' style="text-align: left; list-style: decimal;">
-            <li>sudo apt-get install build-essential python libssl-dev</li>
-            <li>tar xvf node-v0.10.1.tar.gz</li>
-            <li>cd node-v0.10.1</li>
-            <li>./configure</li>
-            <li>make</li>
-            <li>sudo make install</li>
+            <li><pre style='display: inline'>sudo apt-get install build-essential python libssl-dev</pre></li>
+            <li><pre style='display: inline'>tar xvf node-v0.10.1.tar.gz</pre></li>
+            <li><pre style='display: inline'>cd node-v0.10.1</pre></li>
+            <li><pre style='display: inline'>./configure</pre></li>
+            <li><pre style='display: inline'>make</pre></li>
+            <li><pre style='display: inline'>sudo make install</pre></li>
         </ol>
     </div>
 
@@ -80,13 +80,99 @@
     </div>
 
     <div class="step" data-x="4850" data-y="11000" data-rotate="90" data-scale="1">
-        <ol>
-            <li>Node basics</li>
-            <li></li>
-            <li></li>
-            <li></li>
-        </ol>
+       <h1>Basic WebServer</h1> 
+       <pre style="">
+       <code>
+        var http = require(&quot;http&quot;);
+        var server = http.createServer(function (req, res) {
+            res.writeHead(200, {
+               &quot;Content-Type&quot;: &quot;text/plain&quot;
+            });
+            res.end(&quot;Hello World&quot;);
+        });
+
+        server.listen(3000, &quot;127.0.0.1&quot;);
+        </code></pre>
     </div>
+    <div class="step" data-x="4850" data-y="12000" data-rotate="90" data-scale="1">
+        <div>NPM - The Node Package Manager</div>
+        <div class='medium'>Search for modules - <pre style='display: inline'>npm search node-inspector</pre></div>
+        <div class='medium'>Install globally - <pre style='display: inline'>npm install -g node-inspector</pre></div>
+        <div class='medium'>Install locally - <pre style='display: inline'>npm install express</pre></div>
+    </div>
+    <div class="step" data-x="4850" data-y="13000" data-rotate="90" data-scale="1">
+        <h1>Basic Express App</h1>
+        <pre>
+        <code>
+        var express = require('express');
+        var app = express();
+
+        app.get('/', function(req, res){
+          res.send('hello world');
+        });
+
+        app.listen(3000);
+        </code>
+        </pre>
+    </div>
+    <div class="step" data-x="4850" data-y="14000" data-rotate="90" data-scale="1">
+        <h1>Callback Hell</h1>
+        <pre>
+        <code>
+queryDatabase("do some query", function(err, result) {
+    if(err) res.send(err);
+
+    queryDatabase("do some query", function(err, result) {
+        if(err) res.send(err);
+
+        readFileSystem(function(err) {
+            if(err) res.send(err);
+
+            sendRequest(function(err, resp) {
+               if(err) res.send(400, err);
+               else res.send(resp); 
+            });
+        });
+    });
+});
+        </code>
+        </pre>
+    </div>
+
+    <div class="step" data-x="4850" data-y="15000" data-rotate="90" data-scale="1">
+        <h1>Flow Control</h1>
+        <pre>
+        <code>
+async.waterfall([
+    function(callback) {
+        queryDatabase("do some query", callback);
+    },
+    function(result, callback) {
+        queryDatabase("do some query", callback);
+    },
+    function(result, callback) {
+        readFileSystem(callback);
+    }
+
+], function( err, result ) {
+    if(err) res.send(400, err);
+    else res.send(resp);
+});
+        </code>
+        </pre>
+    </div>
+<div class="step" data-x="3350" data-y="12000" data-rotate="90" data-scale="4">
+        <div>Additional Resources</div>
+        <ul>
+            <li><a href="http://nodejs.org/api/">Node API</a></li>
+            <li><a href="http://expressjs.com/api.html">Express.js API</a></li>
+            <li><a href="http://howtonode.org/">How to Node</a></li>
+            <li><a href="https://github.com/caolan/async">Async.js</a></li>
+            <li><a href="http://gruntjs.com">Grunt</a>
+            <li><a href="http://lodash.com">Lo-Dash</a>
+        </ul>
+</div>
+
 <div class="hint">
     <p>Use a spacebar or arrow keys to navigate</p>
 </div>
