@@ -7,3 +7,55 @@ NodeJS
 5) Debugging
 4) Package.json - generating and modifying
 5) Build a Module and Publish to NPM 
+
+
+1) This is an introduction into Node. We will cover the basics from installing node, setting up a basic webserver, using external modules to connect into Mongo, debugging, and publishing a module to the defacto package manager: NPM.
+
+    a) console.log(Math.random() * process.argv[2]);
+
+    b)
+    var http = require('http');
+
+    var server = http.createServer(function(req, res) {
+        res.writeHead(200, {'Content-Type': 'text/plain'});
+        res.end('Hello World');
+    });
+
+    server.listen(5000, '127.0.0.1');
+
+    c) Debugging & NPM - with node-inspector
+        Can install things from NPM globally or locally.  When a module is installed globally, the module will be 
+        downloaded and installed in a root directory and available to import or "require" within any node script. 
+        If installed locally, the module will be downloaded and installed in whatever directory the command is run 
+        from. This module will then only be available from that directory, or from subdirectories. Generally modules 
+        should not be installed globally unless they are a commandline app.
+
+        i. start script with --debug & --debug-brk
+        ii. another console start node-inspector &
+
+        Can put a breakpoint within the createServer callback function and manually inspect the req and resp objects.
+        Could create an actual restful webservice by manually looking at the url and method 
+    
+    d) Express.js
+        The prior "http" module is globally defined and ships with node. Express does not.
+        We need to install express through npm. We will do it locally. 
+
+        var express = require("express");
+        var app = express();
+
+        app.get("/", function(req, res) {
+            
+        });
+
+        app.listen(3000);
+
+        Can easily adjust the response code or headers. .set(field, val) for headers
+
+        Lets create a basic RESTful webservice.
+
+        We can break up the logic easily into multiple files. 
+        
+        module.exports = students
+    
+    e) All of our dependencies are within this directory, but nothing describes them.
+
