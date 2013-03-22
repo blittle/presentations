@@ -61,10 +61,10 @@
         <img src="images/confused.gif" width="600">
     </div>
     <div id='awesome' class="step" data-x="4850" data-y="7000" data-rotate="90" data-scale="1">
-        <img src="images/awesome.gif" width="600">
+        <img src="images/awesome.gif">
     </div>
     <div id='discusted' class="step" data-x="4850" data-y="8000" data-rotate="90" data-scale="1">
-        <img src="images/discusted.gif" width="600">
+        <img src="images/discusted.gif">
     </div>
 
 <div class="hint">
@@ -77,12 +77,11 @@ if ("ontouchstart" in document.documentElement) {
 
 var updateGif = function(e) {
     var img = e.target.children[0];
+    
     img.src = img.src.replace(/\?.*$/,"")+"?x="+Math.random();
 };
 
 document.getElementById("confused").addEventListener("impress:stepenter", updateGif);
-document.getElementById("awesome").addEventListener("impress:stepenter", updateGif);
-document.getElementById("discusted").addEventListener("impress:stepenter", updateGif);
 
 
 </script>
