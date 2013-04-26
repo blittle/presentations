@@ -33,6 +33,23 @@ time, mark, audio, video {
     vertical-align: baseline;
 }
 
+pre {
+    margin-top: 40px;
+    text-align: left;
+}
+
+code {
+    text-align: left;
+}
+
+.autoHide {
+    opacity: 0!important;
+}
+
+.autoHide.active {
+    opacity: 1!important;
+}
+
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
@@ -42,7 +59,9 @@ body {
     line-height: 1;
 }
 ol, ul {
-    list-style: none;
+#    list-style: none;
+    text-align: left;
+    line-height:50px;
 }
 blockquote, q {
     quotes: none;

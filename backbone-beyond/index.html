@@ -30,20 +30,223 @@
 
 <div id="impress">
 
-    <div id="bored" class="step slide" data-x="-1000" data-y="-1500">
+    <div class="step slide" data-x="-1000" data-y="-1500">
         <img src="images/bb-logo.png" height="50%">
         <h1>BACKBONE.JS</h1><h2>Beyond the Basics</h2>
         <br/>
         <div>OpenWest Conference 2013</div>
         <div>Bret Little - @little_bret - http://github.com/blittle</div>
     </div>
-
-    <div id="its-in-3d" class="step" data-x="6200" data-y="4300" data-z="-100" data-rotate-x="-40" data-rotate-y="10" data-scale="2">
-        <p><span class="have">have</span> <span class="you">you</span> <span class="noticed">noticed</span> <span class="its">it's</span> <span class="in">in</span> <b>3D<sup>*</sup></b>?</p>
-        <span class="footnote">* beat that, prezi ;)</span>
+    <div class="step slide" data-x="-1000" data-y="0">
+        <a href="https://simplifile.com/eRecording/pdfs/open-positions/130220-software-developer.pdf"><img src="images/sf-logo.png" style="margin-top:20%" height="250px"></a>
     </div>
+    <div class="step slide" data-x="-1000" data-y="1000">
+        <h1>New to BackboneJS?</h1>
+        <br/>
+        <h2><a href="http://www.backbonejs.org">www.backbonejs.org</a></h2>
+        <br/>
+        <h2><a href="http://www.backbonetutorials.com">www.backbonetutorials.com</a></h2>
+        <br/>
+        <h2><a href="http://www.todomvc.com">www.todomvc.com</a></h2>
+    </div>
+    <div class="step slide" data-x="0" data-y="1000" data-z="0" data-rotate-x="0" data-rotate-y="90" data-scale="1">
+        <h1>Remember to unbind events!</h1>
+        <pre>
+        <code>
+    var myModel = new Backbone.Model();
 
-   
+    // Traditional backbone model event binding 
+    myModel.on("change", this.doSomething);
+    
+    // Bind events within a view. 
+    // Introduced in Backbone v0.9.9
+    this.listenTo(myModel, "change", this.doSomethingElse);
+        </code>
+        <span>
+        </pre>
+    </div>
+    <div class="step slide" data-x="0" data-y="1000" data-z="-1000" data-rotate-x="0" data-rotate-y="90" data-scale="1">
+        <h1>Sub-Views</h1>
+        <pre>
+        <code>
+    Backbone.View.extend({
+        initialize: function() {
+            // Retain a reference to the sub view
+            this.subView = new Backbone.View();
+        },
+
+        render: function() {
+            // Avoid creating subViews within your
+            // render methods
+            this.subView.render();
+            this.$el.append(subView.el);
+        }
+    });
+        </code>
+        </pre>
+    </div>
+    <div class="autoHide step slide" data-x="0" data-y="1000" data-z="-2000" data-rotate-x="0" data-rotate-y="90" data-scale="1">
+        <h1>Cache Templates</h1>
+        <pre><code>
+    Backbone.View.extend({
+        initialize: function() {
+
+        },
+
+        render: function() {
+            // Non-cached!! Don't do!
+            this.$el.html(
+                _.template(myTemplate, {})
+            );
+        }
+    });
+        </code></pre>
+    </div>
+    <div class="autoHide step slide" data-x="0" data-y="1000" data-z="-2000" data-rotate-x="0" data-rotate-y="90" data-scale="1">
+        <h1>Cache Templates</h1>
+        <pre><code>
+    Backbone.View.extend({
+
+        // Cached template 
+        template: _.template(myTemplate),
+
+        initialize: function() {
+
+        },
+
+        render: function() {
+            this.$el.html(
+                this.template({})
+            );
+        }
+    });
+        </code></pre>
+    </div>
+   <div class="autoHide step slide" data-x="0" data-y="1000" data-z="-3000" data-rotate-x="0" data-rotate-y="90" data-scale="1">
+       <h1>Avoid DOM Reflows</h1>
+       <pre><code>
+    Backbone.View.extend({
+
+        render: function() {
+            var $el = this.$el;
+            
+            // Avoid!!
+            this.collection.each(function(model) {
+                var row = new Backbone.View({
+                    model: model
+                });
+
+                $el.append(row.el);
+                row.render();
+            });
+        }
+        
+    });
+       </code></pre>
+   </div>
+
+    <div class="autoHide step slide" data-x="0" data-y="1000" data-z="-3000" data-rotate-x="0" data-rotate-y="90" data-scale="1">
+       <h1>Avoid DOM Reflows</h1>
+       <pre><code>
+    Backbone.View.extend({
+
+        render: function() {
+            var $partial = $('&#60;div/&#62;');
+            
+            // Only one append to the DOM, causing
+            // only one reflow!
+            this.collection.each(function(model) {
+                var row = new Backbone.View({
+                    model: model
+                });
+
+                $partial.append(row.el);
+                row.render();
+            });
+
+            this.$el.append($partial[0]);
+        }
+    });
+       </code></pre>
+   </div>
+
+   <div class="step slide" data-x="0" data-y="2000" data-z="-3000" data-rotate-z="90" data-rotate-x="0" data-rotate-y="90" data-scale="1">
+        <h1>Use Promises</h1>
+        <pre><code>
+    var model = new MyModel();
+    // Success Callback Method
+    model.fetch({
+        success: function() {
+           console.log("finished request"); 
+        }
+    });
+
+    // Promises
+    model.fetch().done(function() {
+        console.log("finished request");
+    });
+        </code></pre>
+   </div>
+
+   <div class="step slide" data-x="0" data-y="3000" data-z="-3000" data-rotate-z="90" data-rotate-x="0" data-rotate-y="90" data-scale="1">
+        <pre><code>
+    // Success Callback Method
+    model1.fetch({
+        success: function() {
+            model2.fetch({
+                success: function() {
+                    console.log("Both requests completed");
+                }
+            });
+        }
+    });
+    
+    // Promises
+    $.when(
+        model1.fetch(),
+        model2.fetch()
+    ).done(function() {
+        console.log("Both requests completed");
+    });
+        </code></pre>
+   </div>
+   <div class="step slide" data-x="0" data-y="4000" data-z="-3000" data-rotate-z="90" data-rotate-x="0" data-rotate-y="90" data-scale="1">
+        <h1>Custom AJAX</h1>
+        <pre><code>
+    // Don't rush to override Backbone.sync
+    // only do so when necessary.
+
+    var MyModel = Backbone.Model.extend({
+        url: "/app/document",
+        submit: function(options) {
+            return this.save({}, _.extend({
+                type: "POST",
+                url: "/app/submit"
+            }, options));
+        }
+    });
+        </code></pre>
+   </div>
+   <div class="step slide" data-x="0" data-y="5000" data-z="-3000" data-rotate-z="90" data-rotate-x="0" data-rotate-y="90" data-scale="1">
+        <h1>Model Validation</h1>
+        <pre><code>
+    var DocumentModel = Backbone.Model.extend({
+        validate: function(attrs, options) {
+           if(!attrs.name) {
+              return "Model must have a name";
+           }
+        }
+    });
+
+    var document = new DocumentModel();
+
+    // Will not save but trigger an error
+    document.save({pages: 5});
+    
+    // Will not validate in Backbone &#62; v0.9.10
+    document.set({pages: 5});
+        </code></pre>
+   </div>
     <div id="overview" class="step" data-x="3000" data-y="1500" data-scale="10">
     </div>
 
