@@ -33,6 +33,23 @@ time, mark, audio, video {
     vertical-align: baseline;
 }
 
+pre {
+    margin-top: 40px;
+    text-align: left;
+}
+
+code {
+    text-align: left;
+}
+
+.autoHide {
+    opacity: 0!important;
+}
+
+.autoHide.active {
+    opacity: 1!important;
+}
+
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
@@ -42,7 +59,9 @@ body {
     line-height: 1;
 }
 ol, ul {
-    list-style: none;
+#    list-style: none;
+    text-align: left;
+    line-height:50px;
 }
 blockquote, q {
     quotes: none;
@@ -64,14 +83,15 @@ body {
     
     min-height: 740px;
 
-    background: rgb(215, 215, 215);
-    background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 500, from(rgb(240, 240, 240)), to(rgb(190, 190, 190)));
-    background: -webkit-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
-    background:    -moz-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
-    background:      -o-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
-    background:         radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
+    #background: rgb(215, 215, 215);
+    #background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 500, from(rgb(89, 83, 69)), to(rgb(53, 49, 41)));
+    #background: -webkit-radial-gradient(rgb(89, 83, 69), rgb(53, 49, 41));
+    #background:    -moz-radial-gradient(rgb(89, 83, 69), rgb(53, 49, 41));
+    #background:      -o-radial-gradient(rgb(89, 83, 69), rgb(53, 49, 41));
+    background:         radial-gradient(rgb(255, 255, 255), rgb(220, 220, 220));
 
     -webkit-font-smoothing: antialiased;
+
 }
 
 b, strong { font-weight: bold }
@@ -81,7 +101,7 @@ a {
     color: inherit;
     text-decoration: none;
     padding: 0 0.1em;
-    background: rgba(255,255,255,0.5);
+    background: rgba(255,255,255,0.2);
     text-shadow: -1px -1px 2px rgba(100,100,100,0.9);
     border-radius: 0.2em;
     
@@ -93,7 +113,7 @@ a {
 }
 
 a:hover {
-    background: rgba(255,255,255,1);
+    background: rgba(255,255,255,.5);
     text-shadow: -1px -1px 2px rgba(100,100,100,0.5);
 }
 
@@ -114,6 +134,7 @@ body     { pointer-events: none; }
     box-sizing:         border-box;
 
     font-family: 'PT Serif', georgia, serif;
+    text-align: center;
 
     font-size: 48px;
     line-height: 1.5;
@@ -135,6 +156,10 @@ body     { pointer-events: none; }
 /* STEP SPECIFIC STYLES */
 
 /* hint on the first slide */
+
+.quote {
+    font-style: italic;
+}
 
 .hint {
     position: fixed;
@@ -182,10 +207,25 @@ body     { pointer-events: none; }
     transform:         translateY(0px);
 }
 
+pre {
+    text-align: left;
+    font-size: 60px;
+    font-family: Andale Mono, Lucida Console, Monaco, fixed, monospace; 
+    color: #000000; 
+    background-color: #eee;
+    font-size: 22px;
+    border: 1px dashed #999999;
+    line-height: 24px;
+    padding: 5px; 
+    overflow: hidden; 
+    width: 100%;    
+}
+
 /* impress.js title */
 
 #title {
     padding: 0;
+    text-align: center;
 }
 
 #title .try {
@@ -201,14 +241,22 @@ body     { pointer-events: none; }
     transform:         translateZ(20px);
 }
 
-#title h1 {
-    font-size: 190px;
-    
-    -webkit-transform: translateZ(50px);
-    -moz-transform:    translateZ(50px);
-    -ms-transform:     translateZ(50px);
-    -o-transform:      translateZ(50px);
-    transform:         translateZ(50px);
+h1 {
+    color: #0071b5;
+    font-size: 80px;
+    line-height: 86px;
+}
+h2 {
+    font-size: 40px;
+    line-height: 46px;
+}
+
+.medium {
+    font-size: 30px;
+}
+
+.small {
+    font-size: 20px;
 }
 
 #title .footnote {
@@ -431,17 +479,10 @@ body     { pointer-events: none; }
     height: 700px;
 
     padding: 40px 60px;
-
-    border-radius: 10px;
-
-    background-color: white;
-
-    box-shadow: 0 2px 6px rgba(0, 0, 0, .1);
-    border: 1px solid rgba(0, 0, 0, .3);
-
+    
+    color: #002a41;
     font-family: 'Open Sans', Arial, sans-serif;
 
-    color: rgb(102, 102, 102);
     text-shadow: 0 2px 2px rgba(0, 0, 0, .1);
 
     font-size: 30px;
