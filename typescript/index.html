@@ -54,6 +54,7 @@
             <li>TypeScript provides very readable output JavaScript code</li>
             <li>TypeScript provides early access to portions of the ECMAScript 6 API</li>
             <li>Although created by Microsoft, TypeScript is free an open sourced under the Apache License.</li>
+            <li>VIM, Sublime Text 2, and IntelliJ support (also Visual Studio)</li>
         </ul>
     </div>
     <div class="step slide" data-x="-1000" data-y="3000"  data-rotate-z="90">        
@@ -120,21 +121,162 @@
     
         </code></pre>
     </div>
-    <div class="step slide" data-x="0" data-y="-1000"  data-rotate-z="-90">
-        <h2>Arrow Function Expressions</h2>        
-        <h2>Preserve lexical scoping of "this"</h2>
+
+    <div class="step slide" data-x="1000" data-y="0"  data-rotate-z="0">
+        <h2>ECMAScript 6 Arrow Function Expressions</h2>        
+        <div>Preserve lexical scoping of "this"</div>
         <pre><code>
-    var mathUtil = {
-        slope: function(x1, x2, y1, y2): number {
-            return (y2 - y1) / (x2 - x1);
-        },
-        slope2: (x1, x2, y1, y2) => {
-            return (y2 - y1) / (x2 - x1);
-        }
-    };
+    function timerInit(time: number) {
+        var self = this;
+
+        this.active = true;
+
+        setTimeout(function() {
+            self.active = false;
+        }, time);
+    }
+
+    function timerInit2(time: number) {
+        this.active = true;
+        
+        setTimeout(() => {
+            this.active = false;
+        }, time);
+    }
         </code></pre>
     </div>
-    <div id="overview" class="step" data-x="3000" data-y="1500" data-scale="10">
+
+    <div class="step slide" data-x="2000" data-y="0"  data-rotate-z="0">
+        <h2>ECMAScript 6 Classes</h2>                
+        <pre><code>
+    class Telescope {
+        private started: bool;
+        public name: string;
+
+        constructor(name: string) {
+            this.name = name;
+        }        
+
+        start() {
+            this.started = true;
+        }
+
+        stop() {
+            this.started = false;
+        }
+    }
+
+    var telescope = new Telescope("My Telescope");
+        </code></pre>
+    </div>
+
+    <div class="step slide" data-x="3000" data-y="0"  data-rotate-z="0">
+        <h2>Class Inheritance</h2>                
+        <pre><code>
+    class AutoScope extends Telescope {        
+        constructor() {
+            // The call to the parent constructor is mandatory
+            super("AutoScope");
+        }    
+
+        public move() {
+            console.log(this.name, 'Moved');
+        }   
+    }
+
+    var autoscope = new AutoScope();
+    autoscope.move();
+        </code></pre>
+    </div>
+
+    <div class="step slide" data-x="4000" data-y="0"  data-rotate-z="0">
+        <h2>Classes with Interfaces</h2>                
+        <pre><code>
+    interface TelescopeInterface {
+        name?: string;
+        start: () => void;
+        stop: () => void;
+    }
+
+    class Telescope implements TelescopeInterface {
+        private started: bool;
+        public name: string;
+
+        constructor(name: string) {
+            this.name = name;
+        }        
+
+        start(): void {
+            this.started = true;
+        }
+
+        stop(): void {
+            this.started = false;
+        }
+    }
+        </code></pre>
+    </div>
+    <div class="step slide" data-x="2000" data-y="2000"  data-rotate-z="0" data-scale="3">
+        <h1>Definition Files</h1>        
+        <ul>
+            <li>Provide type definitions for external libraries.</li>
+            <li>Analagous to C header files</li>
+            <li><a href="https://github.com/borisyankov/DefinitelyTyped">https://github.com/borisyankov/DefinitelyTyped</a> - Catalog of Definition Files</li>
+            <li><a href="https://github.com/Diullei/tsd">https://github.com/Diullei/tsd</a> - TypeScript definition package manager</li>
+        </ul>   
+    </div>
+    <div class="step slide" data-x="5000" data-y="2000"  data-rotate-z="0" data-scale="3">
+        <h1>ECMAScript 6 Modules</h1>        
+        <ul>
+            <li>Write once in the official ECMAScript syntax</li>
+            <li>Compiled to JS with AMD or CommonJS support</li>
+            <li>Modules can build namespaces - reduce global pollution</li>
+            <li>No <a href="https://typescript.codeplex.com/workitem/47">module.exports</a> or anonymous exports support - Difficult to port existing AMD/CommonJS code to TypeScript</li>            
+        </ul>   
+    </div>
+    <div class="step slide" data-x="2000" data-y="4000"  data-rotate-z="0" data-scale="3">
+        <h2>Module Example</h2>   <br/>
+        <div>export accepts var, class, and interface</div>     
+        <pre><code>
+    // module1.ts
+    export var value = 5;
+        </code></pre>            
+        <pre><code>
+    // module2.ts
+    import mod1 = module("module1");
+    console.log(mod1.value);
+        </code></pre>
+    </div>
+
+    <div class="step slide" data-x="5000" data-y="4000"  data-rotate-z="0" data-scale="3">
+        <h2>Module Namespace Example</h2>   <br/>        
+        <pre><code>
+    module Observatory.Devices {
+        export class Telescope {
+            constructor() {}
+        }   
+    }
+
+    module Observatory.Utilities {
+        export var FileUtils = {
+
+        }
+    }
+
+    new Observatory.Devices.Telescope();
+        </code></pre>
+    </div>
+
+    <div class="step slide" data-x="-4000" data-y="2000"  data-rotate-z="0" data-scale="5">
+        <h2>Bootstrap Repositories</h2><br/>
+        <ul>
+            <li>NodeJS Project - <a href="https://github.com/blittle/typescript-node-bootstrap">https://github.com/blittle/typescript-node-bootstrap</a></li>   
+            <li>AMD Browser Project - <a href="https://github.com/blittle/typescript-amd-bootstrap">https://github.com/blittle/typescript-amd-bootstrap</a></li>
+            <li>Namespaced Browser Project - <a href="https://github.com/blittle/typescript-namespace-bootstrap">https://github.com/blittle/typescript-namespace-bootstrap</a></li>            
+        </ul>   
+    </div>
+
+    <div id="overview" class="step" data-x="0000" data-y="1500" data-scale="10">
     </div>
 
 </div>
