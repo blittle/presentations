@@ -49,6 +49,29 @@
         <br/>
         <h2><a href="http://www.todomvc.com">www.todomvc.com</a></h2>
     </div>
+    <div class="step slide" data-x="0" data-y="1000" data-z="1000" data-rotate-x="0" data-rotate-y="90" data-scale="1">
+        <h1>Don't use global jQuery Selectors</h1>
+        <pre>
+        <code>
+    var myView = Backbone.View.extend({
+        initialize: function() {
+
+        },
+
+        render: function() {
+            // Globally select all instances in the DOM
+            $('.someClass');
+
+            // Shorthand for this.$el.find('.someClass') 
+            // the selection search will only 
+            // happen within this view
+            this.$('.someClass');
+        }
+    });
+        </code>
+        <span>
+        </pre>
+    </div>
     <div class="step slide" data-x="0" data-y="1000" data-z="0" data-rotate-x="0" data-rotate-y="90" data-scale="1">
         <h1>Remember to unbind events!</h1>
         <pre>
@@ -66,6 +89,33 @@
         </pre>
     </div>
     <div class="step slide" data-x="0" data-y="1000" data-z="-1000" data-rotate-x="0" data-rotate-y="90" data-scale="1">
+        <h1>Event Delegation</h1>
+        <pre>
+        <code>
+    // Each table row has an associated event
+    Backbone.View.extend({
+        tagName: "tr",        
+
+        events: {
+            "click" : "rowClicked"
+        }
+    });
+
+    // Delegate the row events within a parent
+    // table view with only one actual DOM event    
+    Backbone.View.extend({
+        tagName: "table", 
+
+        ...       
+
+        events: {
+            "click tr" : "rowClicked"
+        }
+    });
+        </code>
+        </pre>
+    </div>
+    <div class="step slide" data-x="0" data-y="1000" data-z="-2000" data-rotate-x="0" data-rotate-y="90" data-scale="1">
         <h1>Sub-Views</h1>
         <pre>
         <code>
@@ -85,7 +135,7 @@
         </code>
         </pre>
     </div>
-    <div class="autoHide step slide" data-x="0" data-y="1000" data-z="-2000" data-rotate-x="0" data-rotate-y="90" data-scale="1">
+    <div class="autoHide step slide" data-x="0" data-y="1000" data-z="-3000" data-rotate-x="0" data-rotate-y="90" data-scale="1">
         <h1>Cache Templates</h1>
         <pre><code>
     Backbone.View.extend({
@@ -102,7 +152,7 @@
     });
         </code></pre>
     </div>
-    <div class="autoHide step slide" data-x="0" data-y="1000" data-z="-2000" data-rotate-x="0" data-rotate-y="90" data-scale="1">
+    <div class="autoHide step slide" data-x="0" data-y="1000" data-z="-3000" data-rotate-x="0" data-rotate-y="90" data-scale="1">
         <h1>Cache Templates</h1>
         <pre><code>
     Backbone.View.extend({
@@ -122,7 +172,7 @@
     });
         </code></pre>
     </div>
-   <div class="autoHide step slide" data-x="0" data-y="1000" data-z="-3000" data-rotate-x="0" data-rotate-y="90" data-scale="1">
+   <div class="autoHide step slide" data-x="0" data-y="1000" data-z="-4000" data-rotate-x="0" data-rotate-y="90" data-scale="1">
        <h1>Avoid DOM Reflows</h1>
        <pre><code>
     Backbone.View.extend({
@@ -145,7 +195,7 @@
        </code></pre>
    </div>
 
-    <div class="autoHide step slide" data-x="0" data-y="1000" data-z="-3000" data-rotate-x="0" data-rotate-y="90" data-scale="1">
+    <div class="autoHide step slide" data-x="0" data-y="1000" data-z="-4000" data-rotate-x="0" data-rotate-y="90" data-scale="1">
        <h1>Avoid DOM Reflows</h1>
        <pre><code>
     Backbone.View.extend({
@@ -170,7 +220,7 @@
        </code></pre>
    </div>
 
-   <div class="step slide" data-x="0" data-y="2000" data-z="-3000" data-rotate-z="90" data-rotate-x="0" data-rotate-y="90" data-scale="1">
+   <div class="step slide" data-x="0" data-y="2000" data-z="-4000" data-rotate-z="90" data-rotate-x="0" data-rotate-y="90" data-scale="1">
         <h1>Use Promises</h1>
         <pre><code>
     var model = new MyModel();
@@ -188,7 +238,7 @@
         </code></pre>
    </div>
 
-   <div class="step slide" data-x="0" data-y="3000" data-z="-3000" data-rotate-z="90" data-rotate-x="0" data-rotate-y="90" data-scale="1">
+   <div class="step slide" data-x="0" data-y="3000" data-z="-4000" data-rotate-z="90" data-rotate-x="0" data-rotate-y="90" data-scale="1">
         <pre><code>
     // Success Callback Method
     model1.fetch({
@@ -210,7 +260,7 @@
     });
         </code></pre>
    </div>
-   <div class="step slide" data-x="0" data-y="4000" data-z="-3000" data-rotate-z="90" data-rotate-x="0" data-rotate-y="90" data-scale="1">
+   <div class="step slide" data-x="0" data-y="4000" data-z="-4000" data-rotate-z="90" data-rotate-x="0" data-rotate-y="90" data-scale="1">
         <h1>Custom AJAX</h1>
         <pre><code>
     // Don't rush to override Backbone.sync
@@ -227,7 +277,7 @@
     });
         </code></pre>
    </div>
-   <div class="step slide" data-x="0" data-y="5000" data-z="-3000" data-rotate-z="90" data-rotate-x="0" data-rotate-y="90" data-scale="1">
+   <div class="step slide" data-x="0" data-y="5000" data-z="-4000" data-rotate-z="90" data-rotate-x="0" data-rotate-y="90" data-scale="1">
         <h1>Model Validation</h1>
         <pre><code>
     var DocumentModel = Backbone.Model.extend({
