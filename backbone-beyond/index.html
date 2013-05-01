@@ -51,138 +51,129 @@
     </div>
     <div class="step slide" data-x="0" data-y="1000" data-z="1000" data-rotate-x="0" data-rotate-y="90" data-scale="1">
         <h1>Don't use global jQuery Selectors</h1>
-        <pre>
-        <code>
-    var myView = Backbone.View.extend({
-        initialize: function() {
+        <pre>        
+    <span style='color:#7f0055; font-weight:bold; '>var</span> myView = Backbone.View.extend({
+        initialize: <span style='color:#7f0055; font-weight:bold; '>function</span>() {
 
         },
 
-        render: function() {
-            // Globally select all instances in the DOM
-            $('.someClass');
+        render: <span style='color:#7f0055; font-weight:bold; '>function</span>() {
+            <span style='color:#3f7f59; '>// Globally select all instances in the DOM</span>
+            $(<span style='color:#2a00ff; '>'.someClass'</span>);
 
-            // Shorthand for this.$el.find('.someClass') 
-            // the selection search will only 
-            // happen within this view
-            this.$('.someClass');
+            <span style='color:#3f7f59; '>// Shorthand for this.$el.find('.someClass') </span>
+            <span style='color:#3f7f59; '>// the selection search will only </span>
+            <span style='color:#3f7f59; '>// happen within this view</span>
+            <span style='color:#7f0055; font-weight:bold; '>this</span>.$(<span style='color:#2a00ff; '>'.someClass'</span>);
         }
     });
-        </code>
         <span>
         </pre>
     </div>
     <div class="step slide" data-x="0" data-y="1000" data-z="0" data-rotate-x="0" data-rotate-y="90" data-scale="1">
         <h1>Remember to unbind events!</h1>
-        <pre>
-        <code>
-    var myModel = new Backbone.Model();
+        <pre>        
+    <span style='color:#7f0055; font-weight:bold; '>var</span> myModel = <span style='color:#7f0055; font-weight:bold; '>new</span> Backbone.Model();
 
-    // Traditional backbone model event binding 
-    myModel.on("change", this.doSomething);
+    <span style='color:#3f7f59; '>// Traditional backbone model event binding </span>
+    myModel.on(<span style='color:#2a00ff; '>"</span><span style='color:#2a00ff; '>change</span><span style='color:#2a00ff; '>"</span>, <span style='color:#7f0055; font-weight:bold; '>this</span>.doSomething);
     
-    // Bind events within a view. 
-    // Introduced in Backbone v0.9.9
-    this.listenTo(myModel, "change", this.doSomethingElse);
-        </code>
-        <span>
+    <span style='color:#3f7f59; '>// Bind events within a view. </span>
+    <span style='color:#3f7f59; '>// Introduced in Backbone v0.9.9</span>
+    <span style='color:#7f0055; font-weight:bold; '>this</span>.listenTo(myModel, <span style='color:#2a00ff; '>"</span><span style='color:#2a00ff; '>change</span><span style='color:#2a00ff; '>"</span>, <span style='color:#7f0055; font-weight:bold; '>this</span>.doSomethingElse);
         </pre>
     </div>
     <div class="step slide" data-x="0" data-y="1000" data-z="-1000" data-rotate-x="0" data-rotate-y="90" data-scale="1">
         <h1>Event Delegation</h1>
-        <pre>
-        <code>
-    // Each table row has an associated event
+    <pre>
+    <span style='color:#3f7f59; '>// Each table row has an associated event</span>
     Backbone.View.extend({
-        tagName: "tr",        
+        tagName: <span style='color:#2a00ff; '>"</span><span style='color:#2a00ff; '>tr</span><span style='color:#2a00ff; '>"</span>,        
 
         events: {
-            "click" : "rowClicked"
+            <span style='color:#2a00ff; '>"</span><span style='color:#2a00ff; '>click</span><span style='color:#2a00ff; '>"</span> : <span style='color:#2a00ff; '>"</span><span style='color:#2a00ff; '>rowClicked</span><span style='color:#2a00ff; '>"</span>
         }
     });
 
-    // Delegate the row events within a parent
-    // table view with only one actual DOM event    
+    <span style='color:#3f7f59; '>// Delegate the row events within a parent</span>
+    <span style='color:#3f7f59; '>// table view with only one actual DOM event    </span>
     Backbone.View.extend({
-        tagName: "table", 
+        tagName: <span style='color:#2a00ff; '>"</span><span style='color:#2a00ff; '>table</span><span style='color:#2a00ff; '>"</span>, 
 
         ...       
 
         events: {
-            "click tr" : "rowClicked"
+            <span style='color:#2a00ff; '>"</span><span style='color:#2a00ff; '>click tr</span><span style='color:#2a00ff; '>"</span> : <span style='color:#2a00ff; '>"</span><span style='color:#2a00ff; '>rowClicked</span><span style='color:#2a00ff; '>"</span>
         }
     });
-        </code>
-        </pre>
+</pre>
     </div>
     <div class="step slide" data-x="0" data-y="1000" data-z="-2000" data-rotate-x="0" data-rotate-y="90" data-scale="1">
-        <h1>Sub-Views</h1>
-        <pre>
-        <code>
+        <h1>Sub-Views</h1>        
+    <pre>
     Backbone.View.extend({
-        initialize: function() {
-            // Retain a reference to the sub view
-            this.subView = new Backbone.View();
+        initialize: <span style='color:#7f0055; font-weight:bold; '>function</span>() {
+            <span style='color:#3f7f59; '>// Retain a reference to the sub view</span>
+            <span style='color:#7f0055; font-weight:bold; '>this</span>.subView = <span style='color:#7f0055; font-weight:bold; '>new</span> Backbone.View();
         },
 
-        render: function() {
-            // Avoid creating subViews within your
-            // render methods
-            this.subView.render();
-            this.$el.append(subView.el);
+        render: <span style='color:#7f0055; font-weight:bold; '>function</span>() {
+            <span style='color:#3f7f59; '>// Avoid creating subViews within your</span>
+            <span style='color:#3f7f59; '>// render methods</span>
+            <span style='color:#7f0055; font-weight:bold; '>this</span>.subView.render();
+            <span style='color:#7f0055; font-weight:bold; '>this</span>.$el.append(subView.el);
         }
     });
-        </code>
-        </pre>
+</pre>
     </div>
     <div class="autoHide step slide" data-x="0" data-y="1000" data-z="-3000" data-rotate-x="0" data-rotate-y="90" data-scale="1">
         <h1>Cache Templates</h1>
-        <pre><code>
+        <pre>
     Backbone.View.extend({
-        initialize: function() {
+        initialize: <span style='color:#7f0055; font-weight:bold; '>function</span>() {
 
         },
 
-        render: function() {
-            // Non-cached!! Don't do!
-            this.$el.html(
+        render: <span style='color:#7f0055; font-weight:bold; '>function</span>() {
+            <span style='color:#3f7f59; '>// Non-cached!! Don't do!</span>
+            <span style='color:#7f0055; font-weight:bold; '>this</span>.$el.html(
                 _.template(myTemplate, {})
             );
         }
     });
-        </code></pre>
+</pre>
     </div>
     <div class="autoHide step slide" data-x="0" data-y="1000" data-z="-3000" data-rotate-x="0" data-rotate-y="90" data-scale="1">
         <h1>Cache Templates</h1>
-        <pre><code>
+        <pre>
     Backbone.View.extend({
 
-        // Cached template 
+        <span style='color:#3f7f59; '>// Cached template </span>
         template: _.template(myTemplate),
 
-        initialize: function() {
+        initialize: <span style='color:#7f0055; font-weight:bold; '>function</span>() {
 
         },
 
-        render: function() {
-            this.$el.html(
-                this.template({})
+        render: <span style='color:#7f0055; font-weight:bold; '>function</span>() {
+            <span style='color:#7f0055; font-weight:bold; '>this</span>.$el.html(
+                <span style='color:#7f0055; font-weight:bold; '>this</span>.template({})
             );
         }
     });
-        </code></pre>
+</pre>
     </div>
    <div class="autoHide step slide" data-x="0" data-y="1000" data-z="-4000" data-rotate-x="0" data-rotate-y="90" data-scale="1">
        <h1>Avoid DOM Reflows</h1>
-       <pre><code>
+       <pre>
     Backbone.View.extend({
 
-        render: function() {
-            var $el = this.$el;
+        render: <span style='color:#7f0055; font-weight:bold; '>function</span>() {
+            <span style='color:#7f0055; font-weight:bold; '>var</span> $el = <span style='color:#7f0055; font-weight:bold; '>this</span>.$el;
             
-            // Avoid!!
-            this.collection.each(function(model) {
-                var row = new Backbone.View({
+            <span style='color:#3f7f59; '>// Avoid!!</span>
+            <span style='color:#7f0055; font-weight:bold; '>this</span>.collection.each(<span style='color:#7f0055; font-weight:bold; '>function</span>(model) {
+                <span style='color:#7f0055; font-weight:bold; '>var</span> row = <span style='color:#7f0055; font-weight:bold; '>new</span> Backbone.View({
                     model: model
                 });
 
@@ -192,21 +183,21 @@
         }
         
     });
-       </code></pre>
+</pre>
    </div>
 
     <div class="autoHide step slide" data-x="0" data-y="1000" data-z="-4000" data-rotate-x="0" data-rotate-y="90" data-scale="1">
        <h1>Avoid DOM Reflows</h1>
-       <pre><code>
+       <pre>
     Backbone.View.extend({
 
-        render: function() {
-            var $partial = $('&#60;div/&#62;');
+        render: <span style='color:#7f0055; font-weight:bold; '>function</span>() {
+            <span style='color:#7f0055; font-weight:bold; '>var</span> $partial = $(<span style='color:#2a00ff; '>'&#60;div/&#62;'</span>);
             
-            // Only one append to the DOM, causing
-            // only one reflow!
-            this.collection.each(function(model) {
-                var row = new Backbone.View({
+            <span style='color:#3f7f59; '>// Only one append to the DOM, causing</span>
+            <span style='color:#3f7f59; '>// only one reflow!</span>
+            <span style='color:#7f0055; font-weight:bold; '>this</span>.collection.each(<span style='color:#7f0055; font-weight:bold; '>function</span>(model) {
+                <span style='color:#7f0055; font-weight:bold; '>var</span> row = <span style='color:#7f0055; font-weight:bold; '>new</span> Backbone.View({
                     model: model
                 });
 
@@ -214,88 +205,89 @@
                 row.render();
             });
 
-            this.$el.append($partial[0]);
+            <span style='color:#7f0055; font-weight:bold; '>this</span>.$el.append($partial[0]);
         }
     });
-       </code></pre>
+</pre>
    </div>
 
    <div class="step slide" data-x="0" data-y="2000" data-z="-4000" data-rotate-z="90" data-rotate-x="0" data-rotate-y="90" data-scale="1">
         <h1>Use Promises</h1>
-        <pre><code>
-    var model = new MyModel();
-    // Success Callback Method
+<pre>
+    <span style='color:#7f0055; font-weight:bold; '>var</span> model = <span style='color:#7f0055; font-weight:bold; '>new</span> MyModel();
+    <span style='color:#3f7f59; '>// Success Callback Method</span>
     model.fetch({
-        success: function() {
-           console.log("finished request"); 
+        success: <span style='color:#7f0055; font-weight:bold; '>function</span>() {
+           console.<span style='color:#7f0055; font-weight:bold; '>log</span>(<span style='color:#2a00ff; '>"</span><span style='color:#2a00ff; '>finished request</span><span style='color:#2a00ff; '>"</span>); 
         }
     });
 
-    // Promises
-    model.fetch().done(function() {
-        console.log("finished request");
+    <span style='color:#3f7f59; '>// Promises</span>
+    model.fetch().done(<span style='color:#7f0055; font-weight:bold; '>function</span>() {
+        console.<span style='color:#7f0055; font-weight:bold; '>log</span>(<span style='color:#2a00ff; '>"</span><span style='color:#2a00ff; '>finished request</span><span style='color:#2a00ff; '>"</span>);
     });
-        </code></pre>
+</pre>
    </div>
 
    <div class="step slide" data-x="0" data-y="3000" data-z="-4000" data-rotate-z="90" data-rotate-x="0" data-rotate-y="90" data-scale="1">
-        <pre><code>
-    // Success Callback Method
+    <pre>
+    <span style='color:#3f7f59; '>// Success Callback Method</span>
     model1.fetch({
-        success: function() {
+        success: <span style='color:#7f0055; font-weight:bold; '>function</span>() {
             model2.fetch({
-                success: function() {
-                    console.log("Both requests completed");
+                success: <span style='color:#7f0055; font-weight:bold; '>function</span>() {
+                    console.<span style='color:#7f0055; font-weight:bold; '>log</span>(<span style='color:#2a00ff; '>"</span><span style='color:#2a00ff; '>Both requests completed</span><span style='color:#2a00ff; '>"</span>);
                 }
             });
         }
     });
     
-    // Promises
+    <span style='color:#3f7f59; '>// Promises</span>
     $.when(
         model1.fetch(),
         model2.fetch()
-    ).done(function() {
-        console.log("Both requests completed");
+    ).done(<span style='color:#7f0055; font-weight:bold; '>function</span>() {
+        console.<span style='color:#7f0055; font-weight:bold; '>log</span>(<span style='color:#2a00ff; '>"</span><span style='color:#2a00ff; '>Both requests completed</span><span style='color:#2a00ff; '>"</span>);
     });
-        </code></pre>
+</pre>
    </div>
    <div class="step slide" data-x="0" data-y="4000" data-z="-4000" data-rotate-z="90" data-rotate-x="0" data-rotate-y="90" data-scale="1">
         <h1>Custom AJAX</h1>
-        <pre><code>
-    // Don't rush to override Backbone.sync
-    // only do so when necessary.
+<pre>
+    <span style='color:#3f7f59; '>// Don't rush to override Backbone.sync</span>
+    <span style='color:#3f7f59; '>// only do so when necessary.</span>
 
-    var MyModel = Backbone.Model.extend({
-        url: "/app/document",
-        submit: function(options) {
-            return this.save({}, _.extend({
-                type: "POST",
-                url: "/app/submit"
+    <span style='color:#7f0055; font-weight:bold; '>var</span> MyModel = Backbone.Model.extend({
+        url: <span style='color:#2a00ff; '>"</span><span style='color:#2a00ff; '>/app/document</span><span style='color:#2a00ff; '>"</span>,
+        submit: <span style='color:#7f0055; font-weight:bold; '>function</span>(options) {
+            <span style='color:#7f0055; font-weight:bold; '>return</span> <span style='color:#7f0055; font-weight:bold; '>this</span>.save({}, _.extend({
+                type: <span style='color:#2a00ff; '>"</span><span style='color:#2a00ff; '>POST</span><span style='color:#2a00ff; '>"</span>,
+                url: <span style='color:#2a00ff; '>"</span><span style='color:#2a00ff; '>/app/submit</span><span style='color:#2a00ff; '>"</span>
             }, options));
         }
     });
-        </code></pre>
+</pre>
    </div>
    <div class="step slide" data-x="0" data-y="5000" data-z="-4000" data-rotate-z="90" data-rotate-x="0" data-rotate-y="90" data-scale="1">
         <h1>Model Validation</h1>
-        <pre><code>
-    var DocumentModel = Backbone.Model.extend({
-        validate: function(attrs, options) {
-           if(!attrs.name) {
-              return "Model must have a name";
+<pre>
+    <span style='color:#7f0055; font-weight:bold; '>var</span> DocumentModel = Backbone.Model.extend({
+        validate: <span style='color:#7f0055; font-weight:bold; '>function</span>(attrs, options) {
+           <span style='color:#7f0055; font-weight:bold; '>if</span>(!attrs.name) {
+              <span style='color:#7f0055; font-weight:bold; '>return</span> <span style='color:#2a00ff; '>"</span><span style='color:#2a00ff; '>Model must have a name</span><span style='color:#2a00ff; '>"</span>;
            }
         }
     });
 
-    var document = new DocumentModel();
+    <span style='color:#7f0055; font-weight:bold; '>var</span> document = <span style='color:#7f0055; font-weight:bold; '>new</span> DocumentModel();
 
-    // Will not save but trigger an error
+    <span style='color:#3f7f59; '>// Will not save but trigger an error</span>
     document.save({pages: 5});
     
-    // Will not validate in Backbone &#62; v0.9.10
+    <span style='color:#3f7f59; '>// Will not validate in Backbone &#62; v0.9.10</span>
     document.set({pages: 5});
-        </code></pre>
+    document.set({pages: 5}, {validate: true});
+</pre>
    </div>
    <div class="slide step" data-x="3000" data-y="2500" data-scale="3" data-rotate-y="340">
         <h1>Backbone Addons</h1>
