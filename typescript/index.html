@@ -79,142 +79,141 @@
     </div>
     <div class="step slide" data-x="0" data-y="2000"  data-rotate-z="-90">
         <h2>Function type definitions</h2>
-        <pre><code>
-    // Parameters with default values should 
-    // appear after required parameters
+        <pre>
+    <span style='color:#3f7f59; '>// Parameters with default values should </span>
+    <span style='color:#3f7f59; '>// appear after required parameters</span>
 
-    function line( x: number, m: number, b: number = 5 ): number {        
-        return m * x + b; 
+    <span style='color:#7f0055; font-weight:bold; '>function</span> line( x: <span style='color:#200080; font-weight:bold; '>number</span>, m: <span style='color:#200080; font-weight:bold; '>number</span>, b: <span style='color:#200080; font-weight:bold; '>number</span> = 5 ): <span style='color:#200080; font-weight:bold; '>number</span>{        
+        <span style='color:#7f0055; font-weight:bold; '>return</span> m * x + b; 
     }
-        </code></pre>        
+</pre>       
     </div>
     <div class="step slide" data-x="0" data-y="1000"  data-rotate-z="-90">
         <h2>Splats - open-ended function parameters</h2>
-        <pre><code>
-    // The splat should be the last or only parameter
+<pre>       
+    <span style='color:#3f7f59; '>// The splat should be the last or only parameter</span>
 
-    function line( x: number, ...params: number[] ): number {        
-        return params[0] * x + params[1]; 
+    <span style='color:#7f0055; font-weight:bold; '>function</span> line( x: <span style='color:#200080; font-weight:bold; '>number</span>, ...params: <span style='color:#200080; font-weight:bold; '>number[]</span> ): <span style='color:#200080; font-weight:bold; '>number</span> {        
+        <span style='color:#7f0055; font-weight:bold; '>return</span> params[0] * x + params[1]; 
     }
-        </code></pre>
+</pre>
     </div>
     <div class="step slide" data-x="0" data-y="0"  data-rotate-z="-90">
         <h2>Interfaces</h2>
-        <pre><code>
-    // The interface definition will 
-    // disappear from the output JS
+<pre>
+    <span style='color:#3f7f59; '>// The interface definition will </span>
+    <span style='color:#3f7f59; '>// disappear from the output JS</span>
 
-    interface LineOptions {
-        x: number;
-        m: number;
-        b?: number; // Optional attribute  
+    <span style='color:#7f0055; font-weight:bold; '>interface</span> LineOptions {
+        x: <span style='color:#200080; font-weight:bold; '>number</span>;
+        m: <span style='color:#200080; font-weight:bold; '>number</span>;
+        b?: <span style='color:#200080; font-weight:bold; '>number</span>; <span style='color:#3f7f59; '>// Optional attribute  </span>
     }
 
-    function line(opts: LineOptions) {
-        return opts.m * opts.x + (opts.b || 3);
+    <span style='color:#7f0055; font-weight:bold; '>function</span> line(opts: LineOptions) {
+        <span style='color:#7f0055; font-weight:bold; '>return</span> opts.m * opts.x + (opts.b || 3);
     }
     
     line({
         x: 1,
         m: 2
     });
-    
-        </code></pre>
+</pre>
     </div>
 
     <div class="step slide" data-x="1000" data-y="0"  data-rotate-z="0">
         <h2>ECMAScript 6 Arrow Function Expressions</h2>        
         <div>Preserve lexical scoping of "this"</div>
-        <pre><code>
-    function timerInit(time: number) {
-        var self = this;
+<pre>
+    <span style='color:#7f0055; font-weight:bold; '>function</span> timerInit(time: <span style='color:#200080; font-weight:bold; '>number</span>) {
+        <span style='color:#7f0055; font-weight:bold; '>var</span> self = <span style='color:#7f0055; font-weight:bold; '>this</span>;
 
-        this.active = true;
+        <span style='color:#7f0055; font-weight:bold; '>this</span>.active = <span style='color:#7f0055; font-weight:bold; '>true</span>;
 
-        setTimeout(function() {
-            self.active = false;
+        setTimeout(<span style='color:#7f0055; font-weight:bold; '>function</span>() {
+            self.active = <span style='color:#7f0055; font-weight:bold; '>false</span>;
         }, time);
     }
 
-    function timerInit2(time: number) {
-        this.active = true;
+    <span style='color:#7f0055; font-weight:bold; '>function</span> timerInit2(time: <span style='color:#200080; font-weight:bold; '>number</span>) {
+        <span style='color:#7f0055; font-weight:bold; '>this</span>.active = <span style='color:#7f0055; font-weight:bold; '>true</span>;
         
         setTimeout(() => {
-            this.active = false;
+            <span style='color:#7f0055; font-weight:bold; '>this</span>.active = <span style='color:#7f0055; font-weight:bold; '>false</span>;
         }, time);
     }
-        </code></pre>
+</pre>
     </div>
 
     <div class="step slide" data-x="2000" data-y="0"  data-rotate-z="0">
         <h2>ECMAScript 6 Classes</h2>                
-        <pre><code>
-    class Telescope {
-        private started: bool;
-        public name: string;
+<pre>
+    <span style='color:#7f0055; font-weight:bold; '>class</span> Telescope {
+        <span style='color:#7f0055; font-weight:bold; '>private</span> started: <span style='color:#200080; font-weight:bold; '>bool</span>;
+        <span style='color:#7f0055; font-weight:bold; '>public</span> name: <span style='color:#200080; font-weight:bold; '>string</span>;
 
-        constructor(name: string) {
-            this.name = name;
+        <span style='color:#7f0055; font-weight:bold; '>constructor</span>(name: <span style='color:#200080; font-weight:bold; '>string</span>) {
+            <span style='color:#7f0055; font-weight:bold; '>this</span>.name = name;
         }        
 
         start() {
-            this.started = true;
+            <span style='color:#7f0055; font-weight:bold; '>this</span>.started = <span style='color:#7f0055; font-weight:bold; '>true</span>;
         }
 
         stop() {
-            this.started = false;
+            <span style='color:#7f0055; font-weight:bold; '>this</span>.started = <span style='color:#7f0055; font-weight:bold; '>false</span>;
         }
     }
 
-    var telescope = new Telescope("My Telescope");
-        </code></pre>
+    <span style='color:#7f0055; font-weight:bold; '>var</span> telescope = <span style='color:#7f0055; font-weight:bold; '>new</span> Telescope(<span style='color:#2a00ff; '>"</span><span style='color:#2a00ff; '>My Telescope</span><span style='color:#2a00ff; '>"</span>);
+</pre>
     </div>
 
     <div class="step slide" data-x="3000" data-y="0"  data-rotate-z="0">
         <h2>Class Inheritance</h2>                
-        <pre><code>
-    class AutoScope extends Telescope {        
-        constructor() {
-            // The call to the parent constructor is mandatory
-            super("AutoScope");
+<pre>
+    <span style='color:#7f0055; font-weight:bold; '>class</span> AutoScope <span style='color:#7f0055; font-weight:bold; '>extends</span> Telescope {        
+        <span style='color:#7f0055; font-weight:bold; '>constructor</span>() {
+            <span style='color:#3f7f59; '>// The call to the parent constructor is mandatory</span>
+            <span style='color:#7f0055; font-weight:bold; '>super</span>(<span style='color:#2a00ff; '>"</span><span style='color:#2a00ff; '>AutoScope</span><span style='color:#2a00ff; '>"</span>);
         }    
 
-        public move() {
-            console.log(this.name, 'Moved');
+        <span style='color:#7f0055; font-weight:bold; '>public</span> move() {
+            console.<span style='color:#7f0055; font-weight:bold; '>log</span>(<span style='color:#7f0055; font-weight:bold; '>this</span>.name, <span style='color:#2a00ff; '>'Moved'</span>);
         }   
     }
 
-    var autoscope = new AutoScope();
+    <span style='color:#7f0055; font-weight:bold; '>var</span> autoscope = <span style='color:#7f0055; font-weight:bold; '>new</span> AutoScope();
     autoscope.move();
-        </code></pre>
+</pre>
     </div>
 
     <div class="step slide" data-x="4000" data-y="0"  data-rotate-z="0">
         <h2>Classes with Interfaces</h2>                
-        <pre><code>
-    interface TelescopeInterface {
-        name?: string;
-        start: () => void;
-        stop: () => void;
+<pre>
+    <span style='color:#7f0055; font-weight:bold; '>interface</span> TelescopeInterface {
+        name?: <span style='color:#200080; font-weight:bold; '>string</span>;
+        start: () => <span style='color:#200080; font-weight:bold; '>void</span>;
+        stop: () => <span style='color:#200080; font-weight:bold; '>void</span>;
     }
 
-    class Telescope implements TelescopeInterface {
-        private started: bool;
-        public name: string;
+    <span style='color:#7f0055; font-weight:bold; '>class</span> Telescope <span style='color:#7f0055; font-weight:bold; '>implements</span> TelescopeInterface {
+        <span style='color:#7f0055; font-weight:bold; '>private</span> started: <span style='color:#200080; font-weight:bold; '>bool</span>;
+        <span style='color:#7f0055; font-weight:bold; '>public</span> name: <span style='color:#200080; font-weight:bold; '>string</span>;
 
-        constructor(name: string) {
-            this.name = name;
+        <span style='color:#7f0055; font-weight:bold; '>constructor</span>(name: <span style='color:#200080; font-weight:bold; '>string</span>) {
+            <span style='color:#7f0055; font-weight:bold; '>this</span>.name = name;
         }        
 
         start(): void {
-            this.started = true;
+            <span style='color:#7f0055; font-weight:bold; '>this</span>.started = <span style='color:#7f0055; font-weight:bold; '>true</span>;
         }
 
         stop(): void {
-            this.started = false;
+            <span style='color:#7f0055; font-weight:bold; '>this</span>.started = <span style='color:#7f0055; font-weight:bold; '>false</span>;
         }
     }
-        </code></pre>
+</pre>
     </div>
     <div class="step slide" data-x="2000" data-y="2000"  data-rotate-z="0" data-scale="3">
         <h1>Definition Files</h1>        
@@ -237,36 +236,35 @@
     <div class="step slide" data-x="2000" data-y="4000"  data-rotate-z="0" data-scale="3">
         <h2>Module Example</h2>   <br/>
         <div>export accepts var, class, and interface</div>     
-        <pre><code>
-    // module1.ts
-    export var value = 5;
-        </code></pre>            
-        <pre><code>
-    // module2.ts
-    import mod1 = module("module1");
-    console.log(mod1.value);
-        </code></pre>
+<pre>
+    <span style='color:#3f7f59; '>// module1.ts</span>
+    <span style='color:#7f0055; font-weight:bold; '>export</span> <span style='color:#7f0055; font-weight:bold; '>var</span> value = 5;
+</pre>        
+<pre>
+    <span style='color:#3f7f59; '>// module2.ts</span>
+    <span style='color:#7f0055; font-weight:bold; '>import</span> mod1 = <span style='color:#7f0055; font-weight:bold; '>module</span>(<span style='color:#2a00ff; '>"</span><span style='color:#2a00ff; '>module1</span><span style='color:#2a00ff; '>"</span>);
+    console.<span style='color:#7f0055; font-weight:bold; '>log</span>(mod1.value);
+</pre>
     </div>
 
     <div class="step slide" data-x="5000" data-y="4000"  data-rotate-z="0" data-scale="3">
         <h2>Module Namespace Example</h2>   <br/>        
-        <pre><code>
-    module Observatory.Devices {
-        export class Telescope {
-            constructor() {}
+<pre>
+    <span style='color:#7f0055; font-weight:bold; '>module</span> Observatory.Devices {
+        <span style='color:#7f0055; font-weight:bold; '>export class</span> Telescope {
+            <span style='color:#7f0055; font-weight:bold; '>constructor</span>() {}
         }   
     }
 
-    module Observatory.Utilities {
-        export var FileUtils = {
+    <span style='color:#7f0055; font-weight:bold; '>module</span> Observatory.Utilities {
+        <span style='color:#7f0055; font-weight:bold; '>export</span> <span style='color:#7f0055; font-weight:bold; '>var</span> FileUtils = {
 
         }
     }
 
-    new Observatory.Devices.Telescope();
-        </code></pre>
+    <span style='color:#7f0055; font-weight:bold; '>new</span> Observatory.Devices.Telescope();
+</pre>
     </div>
-
     <div class="step slide" data-x="-4000" data-y="2000"  data-rotate-z="0" data-scale="5">
         <h2>Bootstrap Repositories</h2><br/>
         <ul>
@@ -278,7 +276,6 @@
 
     <div id="overview" class="step" data-x="0000" data-y="1500" data-scale="10">
     </div>
-
 </div>
 
 <script>
