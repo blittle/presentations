@@ -1,0 +1,31 @@
+<!doctype>
+<html>
+<head>
+    <script type="text/javascript" src="components/jquery/jquery.js"></script>
+    <script type="text/javascript" src="components/underscore/underscore.js"></script>
+    <script type="text/javascript" src="components/backbone/backbone.js"></script>
+</head>
+<body>
+    <h1>Test</h1>
+</body>
+<script>
+    $(document).ready(function() {
+        var View = Backbone.View.extend({
+            initialize: function() {
+                // this.model.on("change", this.render, this);
+                this.listenTo(this.model, "change", this.render);
+            },
+            render: function() {
+                this.$el.html(this.model.get("html"));
+            }
+        });
+
+        var model = window.model = new Backbone.Model({html: "Some html"}); 
+        
+        var view = window.view = new View({model : model}); 
+        view.render();
+
+        $('body').append(view.el);
+    });
+</script>
+</html>
