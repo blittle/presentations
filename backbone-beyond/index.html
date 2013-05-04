@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=1024" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <title>impress.js | presentation tool based on the power of CSS3 transforms and transitions in modern browsers | by Bartek Szopka @bartaz</title>
+    <title>Backbone: Beyond the Basics | by Bret Little @little_bret</title>
     
     <meta name="description" content="impress.js is a presentation tool based on the power of CSS3 transforms and transitions in modern browsers and inspired by the idea behind prezi.com." />
     <meta name="author" content="Bartek Szopka" />
@@ -36,11 +36,23 @@
         <br/>
         <div>OpenWest Conference 2013</div>
         <div>Bret Little - @little_bret - http://github.com/blittle</div>
+        <div>Slides - <a href="http://bretlittle.org:5000/backbone-beyond/">http://bretlittle.org:5000/backbone-beyond/</a></div>
     </div>
     <div class="step slide" data-x="-1000" data-y="0">
         <a href="https://simplifile.com/eRecording/pdfs/open-positions/130220-software-developer.pdf"><img src="images/sf-logo.png" style="margin-top:20%" height="250px"></a>
     </div>
-    <div class="step slide" data-x="-1000" data-y="1000">
+    <div class="autoHide step slide" data-x="-1000" data-y="1000">
+        <h1>BackboneJS</h1>
+        <h2>Beyond the Basics</h2>
+        <br/>        
+    </div>
+    <div class="autoHide step slide" data-x="-1000" data-y="1000">
+        <h1>BackboneJS</h1>
+        <h2>Beyond the Basics</h2>
+        <br/>
+        <img src="images/angular.png">
+    </div>
+    <div class="autoHide step slide" data-x="-1000" data-y="1000">
         <h1>New to BackboneJS?</h1>
         <br/>
         <h2><a href="http://www.backbonejs.org">www.backbonejs.org</a></h2>
@@ -84,6 +96,24 @@
         </pre>
     </div>
     <div class="step slide" data-x="0" data-y="1000" data-z="-1000" data-rotate-x="0" data-rotate-y="90" data-scale="1">
+        <h1>Sub-Views</h1>        
+    <pre>
+    Backbone.View.extend({
+        initialize: <span style='color:#7f0055; font-weight:bold; '>function</span>() {
+            <span style='color:#3f7f59; '>// Retain a reference to the sub view</span>
+            <span style='color:#7f0055; font-weight:bold; '>this</span>.subView = <span style='color:#7f0055; font-weight:bold; '>new</span> Backbone.View();
+        },
+
+        render: <span style='color:#7f0055; font-weight:bold; '>function</span>() {
+            <span style='color:#3f7f59; '>// Avoid creating subViews within your</span>
+            <span style='color:#3f7f59; '>// render methods</span>
+            <span style='color:#7f0055; font-weight:bold; '>this</span>.subView.render();
+            <span style='color:#7f0055; font-weight:bold; '>this</span>.$el.append(subView.el);
+        }
+    });
+</pre>
+    </div>
+    <div class="step slide" data-x="0" data-y="1000" data-z="-2000" data-rotate-x="0" data-rotate-y="90" data-scale="1">
         <h1>Event Delegation</h1>
     <pre>
     <span style='color:#3f7f59; '>// Each table row has an associated event</span>
@@ -107,25 +137,7 @@
         }
     });
 </pre>
-    </div>
-    <div class="step slide" data-x="0" data-y="1000" data-z="-2000" data-rotate-x="0" data-rotate-y="90" data-scale="1">
-        <h1>Sub-Views</h1>        
-    <pre>
-    Backbone.View.extend({
-        initialize: <span style='color:#7f0055; font-weight:bold; '>function</span>() {
-            <span style='color:#3f7f59; '>// Retain a reference to the sub view</span>
-            <span style='color:#7f0055; font-weight:bold; '>this</span>.subView = <span style='color:#7f0055; font-weight:bold; '>new</span> Backbone.View();
-        },
-
-        render: <span style='color:#7f0055; font-weight:bold; '>function</span>() {
-            <span style='color:#3f7f59; '>// Avoid creating subViews within your</span>
-            <span style='color:#3f7f59; '>// render methods</span>
-            <span style='color:#7f0055; font-weight:bold; '>this</span>.subView.render();
-            <span style='color:#7f0055; font-weight:bold; '>this</span>.$el.append(subView.el);
-        }
-    });
-</pre>
-    </div>
+    </div>    
     <div class="autoHide step slide" data-x="0" data-y="1000" data-z="-3000" data-rotate-x="0" data-rotate-y="90" data-scale="1">
         <h1>Cache Templates</h1>
         <pre>
@@ -164,7 +176,7 @@
 </pre>
     </div>
    <div class="autoHide step slide" data-x="0" data-y="1000" data-z="-4000" data-rotate-x="0" data-rotate-y="90" data-scale="1">
-       <h1>Avoid DOM Reflows</h1>
+       <h1></h1>
        <pre>
     Backbone.View.extend({
 
